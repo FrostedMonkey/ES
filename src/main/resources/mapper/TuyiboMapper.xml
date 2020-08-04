@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cc.elasticsearch.mapper.tuyibo.TuyiboMapper">
+
+    <resultMap type="com.cc.elasticsearch.entity.Tuyibo" id="imageDtoResult">
+        <id     property="id"      column="id"      />
+        <result property="tagIds"    column="tagIds"    />
+        <result property="img_name"    column="img_name"    />
+        <result property="img_designer"    column="img_designer"    />
+        <result property="category"    column="category"    />
+        <result property="oss_prepath"    column="oss_prepath"    />
+        <result property="img_thumbnail"    column="img_thumbnail"    />
+        <result property="watch_num"    column="watch_num"    />
+        <result property="download_counts"    column="download_num"    />
+        <result property="prefix_path"    column="prefix_path"    />
+        <result property="img_thumbszie" column="img_thumbszie"/>
+        <result property="like_num" column="like_num"/>
+    </resultMap>
+    <select id="selectAll" resultMap="imageDtoResult">
+        select id,tagIds,img_name,img_designer,img_thumbszie,prefix_path,category,oss_prepath,img_thumbnail,watch_num,download_counts,oss_prepath,like_num from images
+        <where>
+            <if test="updatetime!=null">update_time>#{updatetime}</if>
+        </where>
+    </select>
+
+
+</mapper>

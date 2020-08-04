@@ -1,0 +1,22 @@
+server:
+  port: 8099
+
+elasticsearch:
+  ip: 112.74.109.141:9200
+spring:
+  datasource:
+    db:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://127.0.0.1:3307/suibo?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convert_To_Null&useSSL=true&serverTimezone=GMT%2B8
+      username: root
+      password:
+    db2:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://127.0.0.1:3307/tuyibo?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convert_To_Null&useSSL=true&serverTimezone=GMT%2B8
+      username: root
+      password:
+mybatis:
+  # 搜索指定包别名
+  typeAliasesPackage: com.cc.elasticsearch.entity
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath*:mapper/*Mapper.xml

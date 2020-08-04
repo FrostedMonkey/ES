@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cc.elasticsearch.mapper.suibo.ImageMapper">
+
+    <resultMap type="com.cc.elasticsearch.entity.ImageInfo" id="imageDtoResult">
+        <id     property="id"      column="id"      />
+        <result property="tagIds"    column="tagIds"    />
+        <result property="img_name"    column="img_name"    />
+        <result property="img_designer"    column="img_designer"    />
+        <result property="category"    column="category"    />
+        <result property="img_colors"    column="img_colors"    />
+        <result property="oss_path"    column="oss_path"    />
+        <result property="img_thumbnail"    column="img_thumbnail"    />
+        <result property="watch_num"    column="watch_num"    />
+        <result property="download_num"    column="download_num"    />
+        <result property="update_time"    column="update_time"    />
+        <result property="md5pass" column="md5pass"/>
+        <result property="points_num" column="points_num"/>
+        <result property="upload_date" column="upload_date"/>
+    </resultMap>
+    <select id="selectAll" resultMap="imageDtoResult">
+        select id,tagIds,upload_date,img_name,img_designer,category,img_colors,oss_path,img_thumbnail,watch_num,download_num,update_time,md5pass,points_num from img_info
+        <where>
+            <if test="updatetime!=null">update_time>#{updatetime}</if>
+        </where>
+    </select>
+
+
+</mapper>
