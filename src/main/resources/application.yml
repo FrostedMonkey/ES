@@ -1,10 +1,11 @@
 server:
   port: 8099
-
 elasticsearch:
   ip: 112.74.109.141:9200
 spring:
   datasource:
+    #采用多数据源db为suibo数据库的相关配置；
+    #db2为图一波数据库的相关配置。当需要操作图一波数据库是需要在service层上添加注解 @DS("db2")
     db:
       driver-class-name: com.mysql.cj.jdbc.Driver
       jdbc-url: jdbc:mysql://127.0.0.1:3307/suibo?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convert_To_Null&useSSL=true&serverTimezone=GMT%2B8

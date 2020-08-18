@@ -69,9 +69,14 @@ public class EsIndexService {
             return AjaxResult.error("创建失败");
         }
     }
-
-    public AjaxResult deleteIndex() {
-        DeleteIndexRequest deleteIndexRequest = new DeleteIndexRequest("suibo");
+    /*
+     * @author chenchen
+     * @data 2020/8/18
+     * @return
+     * @description 删除索引
+     */
+    public AjaxResult deleteIndex(String indexName) {
+        DeleteIndexRequest deleteIndexRequest = new DeleteIndexRequest(indexName);
         try {
             AcknowledgedResponse delete = highLevelClient.indices().delete(deleteIndexRequest, RequestOptions.DEFAULT);
             if (delete.isAcknowledged()) {

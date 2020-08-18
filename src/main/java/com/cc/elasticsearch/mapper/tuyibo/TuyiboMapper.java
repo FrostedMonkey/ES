@@ -8,5 +8,5 @@ import java.util.List;
 
 @Component
 public interface TuyiboMapper {
-    public List<Tuyibo> selectAll(Integer updatetime);
+    List<Tuyibo> selectAll(Integer updatetime);
 }

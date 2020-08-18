@@ -9,7 +9,7 @@ import java.util.List;
  * @author : chenchen
  * @ClassName ArrayListSplit
  * @date : 2020-08-01 15:37
- * @Description TODO
+ * @Description TODO 对集合进行分割
  **/
 public class ArrayListSplit<T> {
     public List<List<T>> splitList(List<T> list, int len) {

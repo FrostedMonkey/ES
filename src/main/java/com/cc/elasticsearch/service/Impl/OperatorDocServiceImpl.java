@@ -122,8 +122,27 @@ public class OperatorDocServiceImpl implements OperatorDocService {
     @Override
     @DS("db2")
     public AjaxResult updateTuyiboDoc() {
-        //tuyiboMapper.selectAll(null);
-        return null;
+        try{
+            LocalDateTime today_start = LocalDateTime.of(LocalDate.now(), LocalTime.MIN);
+            Long second = today_start.toEpochSecond(ZoneOffset.of("+8"));
+            int updateTime = second.intValue();
+            List<Tuyibo> imageinfos=tuyiboMapper.selectAll(updateTime);
+            for(int i=0;i<imageinfos.size();i++){
+                String s=imageinfos.get(i).getTagIds().replace(","," ");
+                imageinfos.get(i).setTagIds(s);
+            }
+            logger.info("数据总量："+imageinfos.size());
+            List<List<Tuyibo>> lists = new ArrayListSplit<Tuyibo>().splitList(imageinfos, 5000);
+            for(int j=0;j<lists.size();j++){
+                logger.info("第"+j+"个集合的大小："+lists.get(j).size());
+                tuyiboDao.saveAll(lists.get(j));
+                logger.info("第"+j+"个集合插入成功");
+
+            }
+            return AjaxResult.success();
+        }catch(Exception e){
+            return AjaxResult.error();
+        }
     }
 
 

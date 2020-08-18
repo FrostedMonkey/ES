@@ -22,8 +22,8 @@ public class EsController {
     private OperatorDocService operatorDocService;
     @PostMapping("deleteIndex")
     @ResponseBody
-    public AjaxResult deleteIndex(){
-        return esIndexService.deleteIndex();
+    public AjaxResult deleteIndex(@RequestParam("indexName") String indexName){
+        return esIndexService.deleteIndex(indexName);
     }
 
     /**

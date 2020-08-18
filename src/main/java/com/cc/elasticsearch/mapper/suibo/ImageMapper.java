@@ -6,5 +6,5 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 @Component
 public interface ImageMapper {
-    public List<ImageInfo> selectAll(Integer updatetime);
+    List<ImageInfo> selectAll(Integer updatetime);
 }
